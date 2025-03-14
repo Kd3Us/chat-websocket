@@ -8,4 +8,4 @@ const chatLogSchema = new mongoose.Schema({
     heure: { type: String, required: [true, "L'heure est requise"] },
 });
 
-module.exports = mongoose.model("Message", chatLogSchema)
+module.exports = mongoose.model("Message", chatLogSchema);
