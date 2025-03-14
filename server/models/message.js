@@ -1,16 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect('mongodb://localhost:27017/tchat', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-    console.log('Connecté à MongoDB');
-  } catch (err) {
-    console.error('Erreur de connexion à MongoDB:', err);
-    process.exit(1);
-  }
-};
+const chatLogSchema = new mongoose.Schema({
+    id: { type: String, required: [true, "L'ID est requis"] },
+    name: { type: String, required: [true, "Le nom est requis"] },
+    message: { type: String, required: [true, "Le message est requis"], minlength: 1 },
+    date: { type: String, required: [true, "La date est requise"] },
+    heure: { type: String, required: [true, "L'heure est requise"] },
+});
 
-module.exports = connectDB;
+module.exports = mongoose.model("Message", chatLogSchema)
