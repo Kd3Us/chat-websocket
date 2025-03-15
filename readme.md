@@ -1,59 +1,50 @@
-# Système de Chat en Ligne avec WebSockets
-
+Système de Chat en Ligne avec WebSockets
 Ce projet est un système de chat en ligne utilisant les WebSockets pour permettre à plusieurs utilisateurs de discuter en temps réel. Les logs de chaque conversation sont stockés dans une base de données MongoDB.
+Fonctionnalités
 
-## Fonctionnalités
+Chat en temps réel via Socket.IO
+Authentification simple avec nom d'utilisateur
+Notification des connexions/déconnexions d'utilisateurs
+Stockage des messages dans MongoDB
+API REST pour récupérer et supprimer les logs
+Interface utilisateur responsive
 
-- Chat en temps réel via WebSockets
-- Stockage des messages dans MongoDB
-- API REST pour récupérer et supprimer les logs
-- Interface utilisateur responsive
+Structure du projet
 
-## Structure du projet
+server/ : Code du serveur Node.js avec Express et Socket.io
+client/public/ : Interface utilisateur HTML/CSS/JS
 
-- `server/` : Code du serveur Node.js avec Express et Socket.io
-- `client/` : Code client HTML/CSS/JS
+Installation
+Prérequis
 
-## Installation
+Node.js v14+
+MongoDB
 
-### Prérequis
+Étapes
 
-- Node.js v14+
-- MongoDB
-
-### Étapes
-
-1. Cloner le dépôt
+Cloner le dépôt
 git clone https://github.com/votre-compte/chat-websocket.git
 cd chat-websocket
-
-2. Installer les dépendances du serveur
-
+Installer les dépendances du serveur
 cd server
 npm install
-
-3. Configurer les variables d'environnement
-
+Configurer les variables d'environnement
 cp .env.example .env
-Modifier .env selon vos besoins
+Modifier .env avec vos informations de connexion MongoDB
+Démarrer le serveur
+node server.js
+Accéder à l'application
+Ouvrir http://localhost:3000 dans votre navigateur
 
-4. Démarrer le serveur
+API REST
 
-npm run dev
+GET /api/logs : Récupérer tous les logs de conversation
+POST /api/logs : Créer un nouveau log (utilisé par Socket.IO)
+DELETE /api/logs/:id : Supprimer un log par ID
 
-5. Accéder à l'application
-Ouvrir `client/public/index.html` dans votre navigateur ou démarrer un serveur statique.
+Socket.IO Events
 
-## API REST
-
-- GET `/api/logs` : Récupérer tous les logs de conversation
-- DELETE `/api/logs/:id` : Supprimer un log par ID
-
-## Collaborateurs
-
-- Jules SORRENTINO - Chef de projet & Backend (WebSockets)
-- [Nom du collaborateur 2] - Backend (Base de données)
-- [Nom du collaborateur 3] - Backend (API REST)
-- [Nom du collaborateur 4] - Frontend (Structure & Design)
-- [Nom du collaborateur 5] - Frontend (Fonctionnalités)
- 
+connection : Nouvel utilisateur connecté
+message : Message envoyé par un utilisateur
+username_change : Changement de nom d'utilisateur
+disconnect : Déconnexion d'un utilisateur
