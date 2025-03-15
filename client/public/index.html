@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat en temps réel</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1 class="app-title">Chat en temps réel</h1>
+      <div class="user-info" id="userInfo" style="display: none;">
+        <span class="username" id="usernameDisplay">Connecté en tant que: </span>
+        <button class="change-username" id="changeUsernameBtn">Changer de nom</button>
+      </div>
+    </header>
+
+    <!-- Modal pour le nom d'utilisateur -->
+    <div class="modal-overlay" id="usernameModal">
+      <div class="modal-content">
+        <h2 class="modal-title">Bienvenue dans le Chat</h2>
+        <form class="modal-form" id="usernameForm">
+          <input
+            type="text"
+            class="modal-input"
+            id="usernameInput"
+            placeholder="Entrez votre nom d'utilisateur"
+            autofocus
+          />
+          <p id="usernameError" style="color: #da4453; margin-bottom: 15px; font-size: 0.9em; display: none;"></p>
+          <button type="submit" class="modal-button">Rejoindre le chat</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Container principal du chat -->
+    <div class="chat-container" id="chatContainer" style="display: none;">
+      <div class="chat-main">
+        <div class="message-list" id="messageList">
+          <div id="loadingMessages" style="text-align: center; padding: 20px;">
+            Chargement des messages...
+          </div>
+          <div id="emptyMessages" style="text-align: center; color: #656d78; margin-top: 20px; display: none;">
+            <p>Aucun message pour le moment.</p>
+            <p>Soyez le premier à écrire quelque chose !</p>
+          </div>
+        </div>
+        <form class="message-form" id="messageForm">
+          <input
+            type="text"
+            class="message-input"
+            id="messageInput"
+            placeholder="Tapez votre message ici..."
+            maxlength="1000"
+          />
+          <button type="submit" class="send-button" id="sendButton" disabled>
+            Envoyer
+          </button>
+        </form>
+      </div>
+      <div class="users-sidebar">
+        <h2 class="users-title">Utilisateurs en ligne (<span id="userCount">0</span>)</h2>
+        <ul class="users-list" id="usersList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
